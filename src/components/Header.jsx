@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
   notificationButton: {
     padding: 10,
-    borderRadius: 12,
+    borderRadius: 24,
   },
 });
 
