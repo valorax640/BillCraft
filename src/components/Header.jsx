@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, StatusBar, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useTheme } from '../context/ThemeContext';
 
 const Header = ({ title, onBack, rightIcon, onRightPress, isHome, greeting }) => {
   const { colors } = useTheme();
+  const statusBarHeight = Platform.OS === 'android' ? StatusBar.currentHeight || 0 : 0;
 
   if (isHome) {
     return (
-      <View style={[styles.header, { backgroundColor: colors.primary }]}>
+      <View style={[styles.header, { backgroundColor: colors.primary, paddingTop: statusBarHeight + 16 }]}>
         <View style={styles.homeHeaderContent}>
           <View>
             <Text style={styles.greeting}>{greeting || 'Good Day!'}</Text>
@@ -27,7 +28,7 @@ const Header = ({ title, onBack, rightIcon, onRightPress, isHome, greeting }) =>
   }
 
   return (
-    <View style={[styles.header, { backgroundColor: colors.primary }]}>
+    <View style={[styles.header, { backgroundColor: colors.primary, paddingTop: statusBarHeight + 16 }]}>
       {onBack && (
         <TouchableOpacity onPress={onBack} style={styles.iconButton}>
           <Icon name="arrow-back" size={24} color="#ffffff" />
@@ -49,7 +50,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 14,
-    paddingTop: 16,
     elevation: 4,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },

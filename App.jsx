@@ -12,8 +12,9 @@ const AppContent = () => {
   return (
     <>
       <StatusBar
-        barStyle={isDarkMode ?  'light-content' : 'dark-content'}
+        barStyle="light-content"
         backgroundColor={colors.primary}
+        translucent={true}
       />
       <AppNavigator />
     </>
