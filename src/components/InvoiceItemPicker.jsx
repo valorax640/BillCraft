@@ -39,7 +39,7 @@ const InvoiceItemPicker = ({ visible, products, onSelect, onClose }) => {
             onPress={onClose}
             variant="outline"
             style={styles.closeButton}
-            textStyle={{ color: '#ffffff' }}
+            textStyle={{ color: colors.primary }}
           />
         </View>
 
