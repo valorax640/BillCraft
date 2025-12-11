@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet, Alert, Image } from 'react-native';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
 import Header from '../components/Header';
@@ -63,11 +63,18 @@ const PinLockScreen = ({ navigation }) => {
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <Header
         title="PIN Lock"
-        onBack={() => navigation. goBack()}
+        onBack={() => navigation.goBack()}
       />
 
       <View style={styles.content}>
-        {! isPinEnabled ?  (
+        <View style={styles.iconContainer}>
+          <Image
+            source={require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png')}
+            style={styles.appIcon}
+          />
+        </View>
+
+        {!isPinEnabled ? (
           <View style={[styles.card, { backgroundColor: colors.card }]}>
             <Text style={[styles.cardTitle, { color: colors.text }]}>Setup PIN Lock</Text>
             <Text style={[styles.cardDescription, { color: colors.textSecondary }]}>
@@ -150,6 +157,15 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     padding: 16,
+  },
+  iconContainer: {
+    alignItems: 'center',
+    marginVertical: 24,
+  },
+  appIcon: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
   },
   card: {
     padding: 16,

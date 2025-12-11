@@ -12,7 +12,6 @@ import CreateInvoiceScreen from '../screens/CreateInvoiceScreen';
 import InvoiceDetailScreen from '../screens/InvoiceDetailScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ShopProfileScreen from '../screens/ShopProfileScreen';
-import BackupScreen from '../screens/BackupScreen';
 import PinLockScreen from '../screens/PinLockScreen';
 
 const Stack = createStackNavigator();
@@ -33,7 +32,6 @@ const AppNavigator = () => {
         <Stack.Screen name="InvoiceDetail" component={InvoiceDetailScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="ShopProfile" component={ShopProfileScreen} />
-        <Stack.Screen name="Backup" component={BackupScreen} />
         <Stack.Screen name="PinLock" component={PinLockScreen} />
       </Stack.Navigator>
     </NavigationContainer>

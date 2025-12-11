@@ -6,8 +6,9 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [pin, setPin] = useState(null);
-  const [isLocked, setIsLocked] = useState(false);
+  const [isLocked, setIsLocked] = useState(true); // Start as locked to prevent flash
   const [isPinEnabled, setIsPinEnabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     loadPin();
@@ -19,7 +20,10 @@ export const AuthProvider = ({ children }) => {
       setPin(savedPin);
       setIsPinEnabled(true);
       setIsLocked(true);
+    } else {
+      setIsLocked(false);
     }
+    setIsLoading(false); // Done loading
   };
 
   const setupPin = async (newPin) => {
@@ -56,6 +60,7 @@ export const AuthProvider = ({ children }) => {
         pin,
         isLocked,
         isPinEnabled,
+        isLoading,
         setupPin,
         removePin,
         verifyPin,

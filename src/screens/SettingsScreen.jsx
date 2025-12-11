@@ -23,12 +23,6 @@ const SettingsScreen = ({ navigation }) => {
       screen: 'PinLock',
       badge: isPinEnabled ? 'Enabled' : 'Disabled',
     },
-    {
-      id: 'backup',
-      title: 'Backup & Restore',
-      icon: 'backup',
-      screen: 'Backup',
-    },
   ];
 
   const renderSettingItem = (item) => {
