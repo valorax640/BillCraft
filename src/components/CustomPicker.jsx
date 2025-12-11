@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Platform } from 'react-native';
+import { View, Text, StyleSheet, Platform, Pressable } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useTheme } from '../context/ThemeContext';
 
@@ -19,7 +19,7 @@ const CustomPicker = ({
       {label && (
         <Text style={[styles.label, { color: colors.text }]}>{label}</Text>
       )}
-      <View style={[
+      <Pressable style={[
         styles.pickerWrapper,
         {
           backgroundColor: colors.surface,
@@ -30,7 +30,8 @@ const CustomPicker = ({
           selectedValue={value}
           onValueChange={onValueChange}
           style={[styles.picker, { color: colors.text }]}
-          dropdownIconColor={colors.textSecondary}
+          mode="dropdown"
+          dropdownIconColor={colors.text}
         >
           {placeholder && (
             <Picker.Item 
@@ -48,7 +49,7 @@ const CustomPicker = ({
             />
           ))}
         </Picker>
-      </View>
+      </Pressable>
       {error && <Text style={[styles.error, { color: colors.error }]}>{error}</Text>}
     </View>
   );
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   picker: {
+    width: '100%',
     ...Platform.select({
       ios: {
         height: 52,
